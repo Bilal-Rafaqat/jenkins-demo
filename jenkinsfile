@@ -1,8 +1,8 @@
 pipeline{
     agent any
     parameters{
-        string(name: 'SPEC' defaultValue: "cypress/e2e/**/**", description: "Enter Spec path")
-        string(name: 'BROWSER', choices: ['chrome', 'firefox'], description: "Choose Browser")
+        string(name: 'SPEC', defaultValue: "cypress/e2e/1-getting-started/**", description: "Enter Spec path")
+        choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: "Choose Browser")
     }
 
     options{
