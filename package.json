@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "cd allure-results && del *.json && cd..",
+    "test": "npx cypress run --env allure=true --spec cypress/e2e/1-getting-started/todo.cy.js",
+    "posttest": "npx allure generate --clean"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.35.2",
     "cypress": "^12.6.0"
   }
 }
