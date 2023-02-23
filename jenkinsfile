@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    parameters{
+        string(name: 'SPEC', defaultValue: "cypress/e2e/2-advanced-examples/**", description: "Enter Spec path")
+        choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: "Choose Browser")
+    }
+
+    stages{
+        stage('Building'){
+            steps{
+                echo "Building the Application"
+            }
+        }
+        stage('Testing'){
+            steps{
+                bat "npm i"
+                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+        stage('Deploying'){
+            steps{
+                echo "Deploying the Application"
+            }
+        } 
+    }
+    post{
+        always{
+            allure includeProperties: false, jdk: '', results: [[path: 'C:/ProgramData/Jenkins/.jenkins/workspace/jenkins-demo/allure-results']]
+            // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:/Users/M Bilal Rafaqat/jenkins-demo/allure-report/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        }
+    }
+}
