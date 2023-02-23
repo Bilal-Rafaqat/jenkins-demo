@@ -4,7 +4,7 @@ pipeline{
         string(name: 'SPEC', defaultValue: "cypress/e2e/1-getting-started/**", description: "Enter Spec path")
         choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: "Choose Browser")
     }
-    
+
     stages{
         stage('Building'){
             steps{
@@ -14,7 +14,7 @@ pipeline{
         stage('Testing'){
             steps{
                 bat "npm i"
-                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                bat "npx cypress run --browser ${BROWSER}"
             }
         }
         stage('Deploying'){
