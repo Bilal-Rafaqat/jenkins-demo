@@ -25,7 +25,7 @@ pipeline{
     }
     post{
         always{
-            allure includeProperties: false, jdk: '', results: [[path: 'C:\ProgramData\Jenkins\.jenkins\workspace\jenkins-demo\allure-results']]
+            allure includeProperties: false, jdk: '', results: [[path: 'C:/ProgramData/Jenkins/.jenkins/workspace/jenkins-demo/allure-results']]
             // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:/Users/M Bilal Rafaqat/jenkins-demo/allure-report/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
